@@ -1,0 +1,74 @@
+
+.custom-container {
+   height: 98.8vh;
+   overflow: hidden;
+}
+
+#header {
+   margin-bottom: 10px;
+}
+
+.action {
+   margin-top: 30px;
+}
+
+.dot {
+   float: left;
+   position: relative;
+   height: 10px;
+   width: 10px;
+   background-color: transparent;
+   border-radius: 5px;
+   margin: 1px;
+}
+
+.button-wrapper {
+   margin-top: 20px;
+   text-align: right;
+}
+
+.centralize {
+   margin-top: 10%;
+   text-align: center;
+}
+
+div.color-picker {
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   padding: 0px;
+}
+
+div.color-picker ul {
+   list-style: none;
+   padding: 0px;
+   margin: 0px;
+   float: left;
+}
+
+div.color-picker ul li {
+   display: block;
+   width: 14px;
+   height: 14px;
+   margin: 1px;
+   border-radius: 7px;
+   float: left;
+   cursor: pointer;
+}
+
+
+@media (max-width: 767px) {
+   .button-wrapper {
+      margin-top: 0;
+      text-align: center;
+   }
+
+   .custom-container {
+      text-align: center;
+   }
+
+   .action {
+      margin-top: 0px;
+      margin-bottom: 10px;
+   }
+}
