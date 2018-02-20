@@ -1,72 +1,71 @@
 
 $(document).ready(function () {
 
-   switchView("start");
+  let pickedColor = 'black';
+  let clicks = 0;
 
-   $("#btn-start").on("click", function() {
-      switchView("play");
-      fillCanvas();
-      $('#whatAction').text("Click draw to choose your color");
-   });
+  // init
+  fillCanvas();
+  getMessage('start');
+  animateLogo();
 
-   $("#btn-draw").on("click", pickColor(), function() {
-      $(".dot").on("mouseover", function() {
-         var pickedColor = $("#colorResult").text();
-         $(this).css("background-color", pickedColor);
-      });
-      var clicks = 0;
-      $("#dot-box").on("click", function() {
-         if (clicks % 2 === 0) {
-            $(".dot").unbind("mouseover");
-            if (pickedColor !== 'transparent') {
-               $('#whatAction').text("Click again to continue drawing");
-            }
-            clicks++;
-         } else {
-            var pickedColor = $("#colorResult").text();
-            $(".dot").on("click", function() {
-               $('#whatAction').text("Currently drawing");
-               $(this).css("background-color", pickedColor);
-            });
-            $(".dot").on("mouseover", function() {
-               $('#whatAction').text("Currently drawing");
-               $(this).css("background-color", pickedColor);
-            });
-            clicks++;
-         }
-      });
-   });
+  $('.logo').on('click', animateLogo);
 
-   $('#btn-rub').on("click", function() {
-      var pickedColor = "transparent";
-      $('#whatAction').text("Yeah. Get rid of those dots!");
-      $('#colorDesc').hide();
-      $('.dot').on("mouseover", function() {
-         $(this).css("background-color", pickedColor);
-      });
-      $("#dot-box").on("click", function() {
-         $('#whatAction').text("Nice!");
-         $(".dot").unbind("mouseover");
-         $(".dot").unbind("click");
-      });
-   });
+  $('#btn-draw').simpleColorPicker({
+    onChangeColor: function(color) {
+      setColorPresets(color);
+      pickedColor = color;
+      getMessage('beforeDraw');
+      $('.dot').unbind('mouseover click');
+      clicks = 2;
+    }
+  });
 
-   $("#btn-reset").on("click", function() {
-      $(".dot").remove();
-      fillCanvas();
-      $(".dot").unbind("mouseover");
-      $('#whatAction').text("This was fuck? Try again!");
-      $('#colorDesc').hide();
-      });
+  $('#btn-rub').on('click', function() {
+    pickedColor = '';
+    $('.dot').unbind('mouseover click');
+    if (clicks === 0) {
+      getMessage('errorRub');
+    } else {
+      getMessage('beforeRub');
+      clicks = 2;
+    }
+
+  });
+
+  $('#dot-box').on('click', function() {
+     if (clicks % 2 === 1) {
+        $('.dot').unbind('mouseover click');
+        if (pickedColor !== '') {
+          getMessage('continueDraw');
+        } else {
+          getMessage('continueRub');
+        }
+     } else {
+
+       if (pickedColor !== '') {
+         getMessage('draw');
+         $('.dot').on('click mouseover', function() {
+           $(this).css('background-color', pickedColor);
+           drawAnimation($(this));
+         });
+       } else {
+         getMessage('rub');
+         $('.dot').on('click mouseover', function() {
+           rubAnimation($(this));
+         });
+       }
+     }
+     clicks++;
+  });
+
+  $('#btn-reset').on('click', function() {
+    $('.dot').unbind('mouseover');
+    getMessage('reset');
+    clicks = 0;
+    pickedColor = 'black';
+    $('#colorDesc').text('black (default)').css('color', pickedColor);
+    resetAnimation();
+    });
 
 });
-
-function switchView (view) {
-   if (view === "play") {
-      $("#play").show();
-      $("#start").hide();
-   } else {
-      $("#play").hide();
-      $("#start").show();
-   }
-}

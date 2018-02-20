@@ -18,11 +18,15 @@ ul {
 }
 
 header {
-   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 2% 5.5%;
+  margin-bottom: 20px;
 }
 
-.action {
-   margin-top: 30px;
+.center {
+  text-align: center;
 }
 
 .main {
@@ -46,14 +50,24 @@ header {
    margin: 1px;
 }
 
-.button-wrapper {
-   margin-top: 20px;
-   text-align: right;
+.logo {
+  display: flex;
+  align-items: baseline;
+  perspective: 600px;
+  cursor: pointer;
 }
 
-.centralize {
-   margin-top: 10%;
-   text-align: center;
+.logoText {
+  margin-right: 5px;
+}
+
+.logoDot {
+  float: left;
+  position: relative;
+  height: 12px;
+  width: 12px;
+  border-radius: 6px;
+  margin: 2px;
 }
 
 .color-picker {
@@ -74,15 +88,28 @@ header {
    cursor: pointer;
 }
 
+#colorDesc {
+  color: black;
+  font-weight: bold;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  margin: 2px 7%;
+}
+
 
 @media (max-width: 767px) {
+
    .button-wrapper {
       margin-top: 0;
       text-align: center;
    }
 
-   .custom-container {
-      text-align: center;
+   header {
+     flex-direction: column;
+     align-items: center;
    }
 
    .action {

@@ -2,71 +2,59 @@
 <html lang="en">
 
 <head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <title>jQuery Dots</title>
+  <title>dots</title>
 
-   <!-- Styles-->
-   <link href="css/bootstrap.css" rel="stylesheet">
-   <link href="css/styles.css" rel="stylesheet">
+  <!-- Styles-->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 
-   <!-- Scripts -->
-   <script src="js/jquery-3.2.1.js"></script>
-   <script src="js/bootstrap.js"></script>
-   <script src="js/colorpicker.js"></script>
-   <script src="js/logic.js"></script>
-   <script src="js/controller.js"></script>
-
+  <!-- Scripts -->
+  <script src="js/jquery-3.2.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/TweenMax.js"></script>
+  <script src="js/colorpicker.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/logic.js"></script>
+  <script src="js/controller.js"></script>
 </head>
 
 <body>
-   <div class="container-fluid custom-container">
+  <div class="container-fluid custom-container">
 
-      <section id="play">
-         <header>
-            <div class="row">
-               <div class="col-xs-12 col-sm-4">
-                  <h3>jQuery Dots Game</h3>
-               </div>
-               <div class="col-xs-12 col-sm-4 action text-center">
-                  <span id="whatAction">Currently drawing </span>
-                  <span id="colorDesc"></span>
-               </div>
-               <div class="col-xs-12 col-sm-4 button-wrapper">
-                 <!-- TODO: transfer this data from somewhere else! -->
-                  <div class="col-xs-1">
-                     <span style="color: transparent" id="colorResult"></span>
-                  </div>
-                  <!-- -->
-                  <div class="col-xs-10">
-                     <button class="btn btn-default" id="btn-draw">draw</button>
-                     <button class="btn btn-default" id="btn-rub">rub</button>
-                     <button class="btn btn-default" id="btn-reset">reset</button>
-                  </div>
-               </div>
-            </div>
-         </header>
-         <main class="row main">
-            <div class="col-xs-12 canvas">
-              <table>
-                <tbody id="dot-box"></tbody>
-              </table>
-            </div>
-         </main>
-      </section>
+    <header>
+      <div class="logo">
+        <h2 class="logoText">dots</h2>
+        <div class="logoDot"></div>
+        <div class="logoDot"></div>
+        <div class="logoDot"></div>
+      </div>
+      <div class="center">
+        <span id="whatAction"></span>
+        <p class="currentColor">Current Color: <span id="colorDesc">black (default)</span></p>
+      </div>
+      <div>
+        <button class="btn btn-default" id="btn-draw">draw</button>
+        <button class="btn btn-default" id="btn-rub">rub</button>
+        <button class="btn btn-default" id="btn-reset">reset</button>
+      </div>
+    </header>
 
-      <section id="start">
-         <div class="row">
-            <div class="col-xs-12 centralize">
-               <h3 id="welcome">Welcome to</h3>
-               <h1>jQuery Dots Game</h1>
-               <button class="btn btn-default" id="btn-start">start</button>
-            </div>
-         </div>
-      </section>
+    <main class="main">
+      <div class="canvas">
+        <table>
+          <tbody id="dot-box"></tbody>
+        </table>
+      </div>
+    </main>
 
-   </div>
+    <footer>
+      <div>&copy; 2017 by <a href="https://github.com/lajuma" target="_blank">lajuma</a></div>
+    </footer>
+
+  </div>
 </body>
 </html>
