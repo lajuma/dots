@@ -5,7 +5,7 @@ $(document).ready(function () {
 
    $("#btn-start").on("click", function() {
       switchView("play");
-      fillContent(soManyDots());
+      fillCanvas();
       $('#whatAction').text("Click draw to choose your color");
    });
 
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
    $("#btn-reset").on("click", function() {
       $(".dot").remove();
-      fillContent(soManyDots());
+      fillCanvas();
       $(".dot").unbind("mouseover");
       $('#whatAction').text("This was fuck? Try again!");
       $('#colorDesc').hide();

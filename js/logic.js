@@ -1,15 +1,37 @@
 
-function fillContent(dots) {
-   for (var i = 0; i < dots; i++) {
-      $("#dot-box").append("<div class='dot'></div>");
+function fillCanvas() {
+  const box = $('#dot-box');
+
+  // width and height for dot-box
+  const boxWidth = getDotBoxWidth();
+  const boxHeight = getDotBoxHeight();
+  box.css('width', boxWidth).css('height', boxHeight);
+
+  // count dots per row and column
+  const dotsPerRow = boxWidth/12;
+  const dotsPerColumn = boxHeight/12;
+
+   for (let i=1; i<=dotsPerColumn; i++) {
+     box.append('<tr>');
+     for (let j=1; j<=dotsPerRow; j++) {
+       box.append('<td><div class="dot"></div></td>');
+     }
+     box.append('</tr');
    }
-   return $("#dot-box");
 }
 
-function soManyDots() {
-   var width = $(".custom-container").width();
-   var height = $(".custom-container").height();
-   return (width/12)*(height/12);
+function getDotBoxWidth() {
+  return Math.floor((window.innerWidth*0.90));
+}
+
+function getDotBoxHeight() {
+  /*
+  ** take window inner height
+  ** minus 2% of height (margin of dot-box)
+  ** minus header height (+ 20px header margin)
+  ** minus 10px as buffer for bottom margin
+  */
+  return Math.floor((window.innerHeight*0.95 - $("header").height() - 30));
 }
 
 function pickColor() {

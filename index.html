@@ -23,10 +23,11 @@
 
 <body>
    <div class="container-fluid custom-container">
-      <div id="play">
-         <div id="header">
+
+      <section id="play">
+         <header>
             <div class="row">
-               <div class=" col-xs-12 col-sm-4">
+               <div class="col-xs-12 col-sm-4">
                   <h3>jQuery Dots Game</h3>
                </div>
                <div class="col-xs-12 col-sm-4 action text-center">
@@ -34,23 +35,29 @@
                   <span id="colorDesc"></span>
                </div>
                <div class="col-xs-12 col-sm-4 button-wrapper">
+                 <!-- TODO: transfer this data from somewhere else! -->
                   <div class="col-xs-1">
                      <span style="color: transparent" id="colorResult"></span>
                   </div>
+                  <!-- -->
                   <div class="col-xs-10">
                      <button class="btn btn-default" id="btn-draw">draw</button>
                      <button class="btn btn-default" id="btn-rub">rub</button>
                      <button class="btn btn-default" id="btn-reset">reset</button>
-               </div>
+                  </div>
                </div>
             </div>
-         </div>
-         <div class="row">
-            <div class="col-xs-12" id="dot-box"></div>
-         </div>
-      </div>
+         </header>
+         <main class="row main">
+            <div class="col-xs-12 canvas">
+              <table>
+                <tbody id="dot-box"></tbody>
+              </table>
+            </div>
+         </main>
+      </section>
 
-      <div id="start">
+      <section id="start">
          <div class="row">
             <div class="col-xs-12 centralize">
                <h3 id="welcome">Welcome to</h3>
@@ -58,7 +65,8 @@
                <button class="btn btn-default" id="btn-start">start</button>
             </div>
          </div>
-      </div>
+      </section>
+
    </div>
 </body>
 </html>
